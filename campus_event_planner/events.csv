@@ -1,0 +1,4 @@
+event_id,title,category,date,start_time,end_time,venue,capacity,status
+E001,Python for Everyone,Workshop,2026-12-05,10:00,13:00,Computer Lab 2,40,Open
+E002,Campus Open Mic,Cultural,2026-12-06,17:00,20:00,Open Air Theatre,80,Open
+E003,Sustainable Campus Forum,Seminar,2026-12-08,11:00,12:30,Seminar Hall A,60,Open

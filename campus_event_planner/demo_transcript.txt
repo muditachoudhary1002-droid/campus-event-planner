@@ -1,0 +1,752 @@
+######################################################################
+TEST 1: Startup and analytics (Normal) - First launch with the fictional sample files; list events and open demand report
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 1
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E002 | Campus Open Mic [Cultural]
+     2026-12-06 17:00-20:00 @ Open Air Theatre | Seats left: 79/80
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 5
+
+=== Demand Report ===
+Open events: 3 | Registrations: 3 | Overall occupancy: 1.7%
+
+Ranking by occupancy:
+1. Python for Everyone - 2/40 seats (5%) - More promotion may help
+2. Campus Open Mic - 1/80 seats (1%) - More promotion may help
+3. Sustainable Campus Forum - 0/60 seats (0%) - More promotion may help
+
+Registrations by category:
+  Workshop: 2
+  Cultural: 1
+  Seminar: 0
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 2: Event creation (Normal) - Create a valid event in a free venue
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: Hackathon Kickoff
+Category (e.g. Workshop, Cultural): Competition
+Date (YYYY-MM-DD): 2026-12-10
+Start time (HH:MM, 24h): 10:00
+End time (HH:MM, 24h): 12:00
+Venue: Main Auditorium
+Capacity: 50
+Event created with ID E004.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 3: Venue conflict (Boundary) - New event starts exactly when another ends in the same venue
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: Doubt Clinic
+Category (e.g. Workshop, Cultural): Workshop
+Date (YYYY-MM-DD): 2026-12-05
+Start time (HH:MM, 24h): 13:00
+End time (HH:MM, 24h): 14:00
+Venue: Computer Lab 2
+Capacity: 30
+Event created with ID E004.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 4: Venue conflict (Invalid) - New event overlaps an existing one; venue typed in different letter case
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: Clash
+Category (e.g. Workshop, Cultural): Workshop
+Date (YYYY-MM-DD): 2026-12-05
+Start time (HH:MM, 24h): 11:00
+End time (HH:MM, 24h): 12:00
+Venue: computer lab 2
+Capacity: 30
+Event not created: Venue conflict with E001 'Python for Everyone' (10:00-13:00) at Computer Lab 2 on 2026-12-05.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 5: Event creation (Invalid) - Impossible date, bad time, end before start, zero capacity, non-numeric capacity
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: X
+Category (e.g. Workshop, Cultural): Talk
+Date (YYYY-MM-DD): 2026-02-30
+Start time (HH:MM, 24h): 10:00
+End time (HH:MM, 24h): 11:00
+Venue: Hall
+Capacity: 10
+Event not created: Date must be a real date in YYYY-MM-DD format.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: X
+Category (e.g. Workshop, Cultural): Talk
+Date (YYYY-MM-DD): 2026-12-10
+Start time (HH:MM, 24h): 25:00
+End time (HH:MM, 24h): 11:00
+Venue: Hall
+Capacity: 10
+Event not created: Times must be in 24-hour HH:MM format.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: X
+Category (e.g. Workshop, Cultural): Talk
+Date (YYYY-MM-DD): 2026-12-10
+Start time (HH:MM, 24h): 11:00
+End time (HH:MM, 24h): 10:00
+Venue: Hall
+Capacity: 10
+Event not created: End time must be later than start time.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: X
+Category (e.g. Workshop, Cultural): Talk
+Date (YYYY-MM-DD): 2026-12-10
+Start time (HH:MM, 24h): 10:00
+End time (HH:MM, 24h): 11:00
+Venue: Hall
+Capacity: 0
+Event not created: Capacity must be a positive number.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: X
+Category (e.g. Workshop, Cultural): Talk
+Date (YYYY-MM-DD): 2026-12-10
+Start time (HH:MM, 24h): 10:00
+End time (HH:MM, 24h): 11:00
+Venue: Hall
+Capacity: abc
+Event not created: Capacity must be a whole number.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 6: Registration (Normal) - Register a student for an open event with seats left
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 3
+
+=== Register Student ===
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E002 | Campus Open Mic [Cultural]
+     2026-12-06 17:00-20:00 @ Open Air Theatre | Seats left: 79/80
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+
+Event ID: E003
+Student ID: S26CSEU1374
+Student name: Advika Chamoli
+Email: advika@example.edu
+Registered Advika Chamoli for 'Sustainable Campus Forum' (ID R004). Seats left: 59.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 7: Registration (Invalid) - Same student ID registers twice for the same event
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 3
+
+=== Register Student ===
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E002 | Campus Open Mic [Cultural]
+     2026-12-06 17:00-20:00 @ Open Air Theatre | Seats left: 79/80
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+
+Event ID: E001
+Student ID: s26cseu1001
+Student name: Aarav Mehta
+Email: aarav.mehta@example.edu
+Registration failed: Student S26CSEU1001 is already registered for E001.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 8: Registration (Boundary) - Fill an event to capacity, then try one more registration
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 2
+
+=== Create Event ===
+Title: Mini Meetup
+Category (e.g. Workshop, Cultural): Talk
+Date (YYYY-MM-DD): 2026-12-10
+Start time (HH:MM, 24h): 10:00
+End time (HH:MM, 24h): 11:00
+Venue: Room 5
+Capacity: 1
+Event created with ID E004.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 3
+
+=== Register Student ===
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E002 | Campus Open Mic [Cultural]
+     2026-12-06 17:00-20:00 @ Open Air Theatre | Seats left: 79/80
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+E004 | Mini Meetup [Talk]
+     2026-12-10 10:00-11:00 @ Room 5 | Seats left: 1/1
+
+Event ID: E004
+Student ID: S1
+Student name: First Student
+Email: first@example.edu
+Registered First Student for 'Mini Meetup' (ID R004). Seats left: 0.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 3
+
+=== Register Student ===
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E002 | Campus Open Mic [Cultural]
+     2026-12-06 17:00-20:00 @ Open Air Theatre | Seats left: 79/80
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+E004 | Mini Meetup [Talk]
+     2026-12-10 10:00-11:00 @ Room 5 | Seats left: 0/1
+
+Event ID: E004
+Student ID: S2
+Student name: Second Student
+Email: second@example.edu
+Registration failed: Event E004 is full (1/1 seats).
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 9: Registration (Invalid) - Malformed email address
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 3
+
+=== Register Student ===
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E002 | Campus Open Mic [Cultural]
+     2026-12-06 17:00-20:00 @ Open Air Theatre | Seats left: 79/80
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+
+Event ID: E001
+Student ID: S26CSEU1999
+Student name: Test User
+Email: not-an-email
+Registration failed: Email address looks invalid (expected name@domain.com).
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 10: Cancellation (Normal) - Cancel an event that has a registration, then try to register for it
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 4
+
+=== Cancel Event ===
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E002 | Campus Open Mic [Cultural]
+     2026-12-06 17:00-20:00 @ Open Air Theatre | Seats left: 79/80
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+
+Event ID to cancel: E002
+Cancel 'Campus Open Mic' (1 registrations kept on record)? (y/n): y
+Event E002 marked as Cancelled. Records retained.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 1
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 3
+
+=== Register Student ===
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+
+Event ID: E002
+Student ID: S9
+Student name: Late Student
+Email: late@example.edu
+Registration failed: Event E002 is Cancelled and cannot take registrations.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 11: Menu input (Invalid) - Non-numeric, out-of-range and empty menu choices
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: abc
+Invalid option. Please enter a number from 0 to 5.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 9
+Invalid option. Please enter a number from 0 to 5.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 
+Invalid option. Please enter a number from 0 to 5.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+
+######################################################################
+TEST 12: CSV persistence (Normal) - Register a student, exit, start the program again and open the report
+Result: PASS
+######################################################################
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 3
+
+=== Register Student ===
+
+=== Upcoming Events ===
+E001 | Python for Everyone [Workshop]
+     2026-12-05 10:00-13:00 @ Computer Lab 2 | Seats left: 38/40
+E002 | Campus Open Mic [Cultural]
+     2026-12-06 17:00-20:00 @ Open Air Theatre | Seats left: 79/80
+E003 | Sustainable Campus Forum [Seminar]
+     2026-12-08 11:00-12:30 @ Seminar Hall A | Seats left: 60/60
+
+Event ID: E003
+Student ID: S26CSEU1374
+Student name: Advika Chamoli
+Email: advika@example.edu
+Registered Advika Chamoli for 'Sustainable Campus Forum' (ID R004). Seats left: 59.
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 5
+
+=== Demand Report ===
+Open events: 3 | Registrations: 4 | Overall occupancy: 2.2%
+
+Ranking by occupancy:
+1. Python for Everyone - 2/40 seats (5%) - More promotion may help
+2. Sustainable Campus Forum - 1/60 seats (2%) - More promotion may help
+3. Campus Open Mic - 1/80 seats (1%) - More promotion may help
+
+Registrations by category:
+  Workshop: 2
+  Cultural: 1
+  Seminar: 1
+
+==============================
+   CAMPUS EVENT PLANNER
+==============================
+1. List upcoming events
+2. Create a new event
+3. Register a student
+4. Cancel an event
+5. Demand report
+0. Exit
+Choose an option: 0
+Goodbye!
+

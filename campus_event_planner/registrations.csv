@@ -1,0 +1,4 @@
+registration_id,event_id,student_id,student_name,email,timestamp
+R001,E001,S26CSEU1001,Aarav Mehta,aarav.mehta@example.edu,2026-11-20 09:15:00
+R002,E001,S26CSEU1002,Diya Nair,diya.nair@example.edu,2026-11-20 09:42:10
+R003,E002,S26CSEU1003,Kabir Singh,kabir.singh@example.edu,2026-11-21 14:05:33
